@@ -1,12 +1,45 @@
-package ru.kpfu.itis.group101.komissarov.course1.term2.ASD.sem2;
+package ru.kpfu.itis.group101.imamov.c2.asd.shellSort;
 
-import java.util.Arrays;
+import ru.kpfu.itis.group101.imamov.c2.asd.shellSort.benchmark.Benchmark;
+import ru.kpfu.itis.group101.imamov.c2.asd.shellSort.dataset.GenerateCSVDataset;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class Main {
+    private Scanner sc;
+    private Path currentFolder;
+    private String[] folderNames;
+    private int[] size;
+    private GenerateCSVDataset generateCSVDataset;
+    private Benchmark benchmark;
+
+    public void init() {
+        sc = new Scanner(System.in);
+        currentFolder = Paths.get(sc.nextLine());    //ввод пути до папки, где нужно создать файлы для тестовых данных
+        folderNames = new String[]{"set-1","set-2","set-3","set-4","set-5"};
+        size = new int[]{100,500,1000,5000,10000,25000,50000,100000,250000,500000,750000,1000000};
+        generateCSVDataset = new GenerateCSVDataset(currentFolder,folderNames,size);
+        benchmark = new Benchmark();
+    }
+
+    public void start() {
+        //генерация файлов с тестовыми данными
+        generateCSVDataset.writeValues();
+
+        //тестирование данных каждого файла
+        for (String folderName : folderNames) {
+            for (int value : size) {
+                String fileForTesting = currentFolder.toString() + "\\" + folderName + "\\" + value + ".csv";
+                System.out.println(benchmark.testing(fileForTesting, value));
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        int[] a = new int[]{1,4,6,-2,-5,13,-1,0};
-        ShellSorting sort = new ShellSorting(a);
-        int[] b = sort.sort();
-        System.out.println(Arrays.toString(b));
+        Main main = new Main();
+        main.init();
+        main.start();
     }
 }

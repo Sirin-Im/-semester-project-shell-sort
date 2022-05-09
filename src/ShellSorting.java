@@ -1,4 +1,4 @@
-package ru.kpfu.itis.group101.komissarov.course1.term2.ASD.sem2;
+package ru.kpfu.itis.group101.imamov.c2.asd.shellSort;
 
 import java.util.Arrays;
 
