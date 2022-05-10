@@ -83,6 +83,6 @@ https://github.com/Sirin-Im/semester-project-shell-sort.git.
 2. javac Main.java
 3. java Main
 ## Источники
-https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D0%A8%D0%B5%D0%BB%D0%BB%D0%B0
-https://habr.com/ru/post/204968
+https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D0%A8%D0%B5%D0%BB%D0%BB%D0%B0  
+https://habr.com/ru/post/204968  
 https://javascopes.com/reading-and-writing-csvs-in-java-249bbeeb
