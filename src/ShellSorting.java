@@ -26,4 +26,8 @@ public class ShellSorting {
         }
         return Arrays.copyOf(array,array.length);
     }
+    
+    public int[] getArray() {
+        return array;
+    }
 }
