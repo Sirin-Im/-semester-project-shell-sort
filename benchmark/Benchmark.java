@@ -1,5 +1,6 @@
 package ru.kpfu.itis.group101.imamov.c2.asd.shellSort.benchmark;
 
+import ru.kpfu.itis.group101.imamov.c2.asd.shellSort.StorageTimesForDifferentSteps;
 import ru.kpfu.itis.group101.imamov.c2.asd.shellSort.ShellSorting;
 
 import java.io.BufferedReader;
@@ -7,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Benchmark {
+    private double[] timeOnDifferentSteps;
 
     public double testing(String nameOfFile, int size) {
         int[] values = new int[size];
@@ -28,11 +30,20 @@ public class Benchmark {
         }
 
         //замер времени в миллисекундах
-        ShellSorting shellSort = new ShellSorting(values);
+        StorageTimesForDifferentSteps time = new StorageTimesForDifferentSteps(size);
+
+        ShellSorting shellSort = new ShellSorting(values,time);
         long timeBefore = System.nanoTime();
         shellSort.sort();
         long timeAfter = System.nanoTime();
 
+        //в timeOnDifferentSteps каждый раз записывается массив, содержащий время работы файли при каждом различном шаге
+        timeOnDifferentSteps = time.getResult();
+
         return (double)(timeAfter - timeBefore)/1000000;
+    }
+
+    public double[] getTimeOnDifferentSteps() {
+        return timeOnDifferentSteps;
     }
 }
